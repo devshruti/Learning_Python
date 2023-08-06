@@ -129,3 +129,103 @@ list2 = ["Dear", "Sir"]
 result_list = [word1 + word2 for word1 in list1 for word2 in list2]
 print(result_list)
 
+
+
+### Problem **7: Iterate both lists simultaneously**
+# Given a two Python list. Write a program to iterate both lists simultaneously and display items from list1 in original order and items from list2 in reverse order.
+
+# **Given**
+# ```
+# list1 = [10, 20, 30, 40]
+# list2 = [100, 200, 300, 400]
+# ```
+
+# **Expected output:**
+# 10 400
+# 20 300
+# 30 200
+# 40 100
+
+
+list1 = [10, 20, 30, 40]
+list2 = [100, 200, 300, 400]
+
+if len(list1) == len(list2):
+    for num1, num2 in zip(list1, reversed(list2)):
+        print(num1, num2)
+
+
+### Problem **8: Initialize dictionary with default values**
+# In Python, we can initialize the keys with the same values.
+
+# **Given**:
+# ```
+# employees = ['Kelly', 'Emma']
+# defaults = {"designation": 'Developer', "salary": 8000}
+# ```
+
+# **Expected output:**
+# ```
+# {'Kelly': {'designation': 'Developer', 'salary': 8000}, 'Emma': {'designation': 'Developer', 'salary': 8000}}
+# ```
+
+employees = ['Kelly', 'Emma']
+defaults = {"designation": 'Developer', "salary": 8000}
+
+output = {employee: defaults for employee in employees}
+print(output)
+
+
+### Problem **9: Create a dictionary by extracting the keys from a given dictionary**
+# Write a Python program to create a new dictionary by extracting the mentioned keys from the below dictionary.
+
+# **Given dictionary**:
+# ```
+# sample_dict = {
+#     "name": "Kelly",
+#     "age": 25,
+#     "salary": 8000,
+#     "city": "New york"}
+# keys = ["name", "salary"]
+# ```
+
+# **Expected output:**
+# ```
+# {'name': 'Kelly', 'salary': 8000}
+# ```
+
+sample_dict = {
+    "name": "Kelly",
+    "age": 25,
+    "salary": 8000,
+    "city": "New york"}
+
+keys = ["name", "salary"]
+
+
+output = {key: sample_dict[key] for key in keys}
+print(output)
+
+
+### Problem **10: Modify the tuple**
+# Given a nested tuple. Write a program to modify the first item (22) of a list inside the following tuple to 222
+
+# **Given**:
+# ```
+# tuple1 = (11, [22, 33], 44, 55)
+# ```
+
+# **Expected output:**
+# ```
+# tuple1: (11, [222, 33], 44, 55)
+# ```
+
+tuple1 = (11, [22, 33], 44, 55)
+
+list1 = list(tuple1)
+
+list1[1][0] = 222
+
+mod_tuple = tuple(list1)
+
+print(mod_tuple)
