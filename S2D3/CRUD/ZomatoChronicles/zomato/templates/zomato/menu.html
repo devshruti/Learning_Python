@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato Chronicles - Menu</title>
+</head>
+
+<body>
+    <h1>Menu</h1>
+    <ul>
+        {% for dish in menu_data %}
+        <li>
+             Name: {{ dish.dish_name }}<br>
+            Price: ${{ dish.price }}<br>
+            {% if dish.available %}Availability: Available{% else %}Availability: Not Available{% endif %}
+        </li>
+        <br>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
