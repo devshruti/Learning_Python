@@ -12,13 +12,28 @@
     <ul>
         {% for dish in menu_data %}
         <li>
-             Name: {{ dish.dish_name }}<br>
+            Name: {{ dish.dish_name }}<br>
             Price: ${{ dish.price }}<br>
             {% if dish.available %}Availability: Available{% else %}Availability: Not Available{% endif %}
+            - <a href="{% url 'remove_dish' dish.dish_id %}">Remove</a>
+            - <a href="{% url 'update_availability' dish.dish_id %}">Update Availability</a>
         </li>
         <br>
         {% endfor %}
     </ul>
+    <h2>Order List</h2>
+<ul>
+    {% for order in orders_list %}
+        <li>
+            Order ID: {{ order.order_id }}<br>
+            Dishes: 
+            {% for dish in order.dishes %}
+                {{ dish.dish_name }} ({{ dish.price }}), 
+            {% endfor %}
+            <br>Status: {{ order.status }}
+        </li>
+    {% endfor %}
+</ul>
 </body>
 
 </html>

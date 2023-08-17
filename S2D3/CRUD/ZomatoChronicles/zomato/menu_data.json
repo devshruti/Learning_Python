@@ -1,11 +1,5 @@
 [
     {
-        "dish_id": 1,
-        "dish_name": "Pasta",
-        "price": 8.99,
-        "available": true
-    },
-    {
         "dish_id": 2,
         "dish_name": "Pizza",
         "price": 10.99,
@@ -15,6 +9,18 @@
         "dish_id": 3,
         "dish_name": "Burger",
         "price": 6.99,
+        "available": false
+    },
+    {
+        "dish_id": 4,
+        "dish_name": "Subway",
+        "price": 25.0,
+        "available": true
+    },
+    {
+        "dish_id": 5,
+        "dish_name": "sandwich",
+        "price": 40.0,
         "available": true
     }
 ]

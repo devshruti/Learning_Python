@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Dish</title>
+</head>
+<body>
+    <h1>Add a New Dish</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="dish_id">Dish ID:</label>
+        <input type="number" name="dish_id"><br>
+        <label for="dish_name">Dish Name:</label>
+        <input type="text" name="dish_name"><br>
+        <label for="dish_price">Price:</label>
+        <input type="number" step="0.01" name="dish_price"><br>
+        <label for="dish_available">Available:</label>
+        <input type="checkbox" name="dish_available"><br>
+        <button type="submit">Add Dish</button>
+    </form>
+    <a href="{% url 'menu' %}">Back to Menu</a>
+</body>
+</html>

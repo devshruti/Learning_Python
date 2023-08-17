@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Place Order</title>
+</head>
+<body>
+    <h1>Place a New Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="order_dish">Select Dish:</label>
+        <select name="order_dish" multiple>
+            {% for dish in menu_data %}
+                <option value="{{ dish.dish_id }}">{{ dish.dish_name }} - ${{ dish.price }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Place Order</button>
+    </form>
+    <a href="{% url 'menu' %}">Back to Menu</a>
+</body>
+</html>
