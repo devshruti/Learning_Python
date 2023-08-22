@@ -9,18 +9,18 @@
         "dish_id": 3,
         "dish_name": "Burger",
         "price": 6.99,
-        "available": false
+        "available": true
     },
     {
         "dish_id": 4,
         "dish_name": "Subway",
         "price": 25.0,
-        "available": true
+        "available": false
     },
     {
         "dish_id": 5,
         "dish_name": "sandwich",
         "price": 40.0,
-        "available": true
+        "available": false
     }
 ]

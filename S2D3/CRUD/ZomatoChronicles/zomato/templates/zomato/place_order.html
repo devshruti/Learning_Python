@@ -2,17 +2,108 @@
 <html>
 <head>
     <title>Place Order</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, ul, li, form, label, button, a {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set a background color */
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* Style the page title */
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Style the form container */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Style labels */
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Style the checkboxes */
+        .checkbox-group {
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        /* Style the customer name input */
+        .customer-name {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Style the submit button */
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style the "Back to Menu" link */
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <h1>Place a New Order</h1>
     <form method="post">
         {% csrf_token %}
-        <label for="order_dish">Select Dish:</label>
-        <select name="order_dish" multiple>
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" name="customer_name" class="customer-name"><br>
+        <div class="checkbox-group">
+            <label>Select Dish(es):</label>
             {% for dish in menu_data %}
-                <option value="{{ dish.dish_id }}">{{ dish.dish_name }} - ${{ dish.price }}</option>
+                <label>
+                    <input type="checkbox" name="order_dish" value="{{ dish.dish_id }}">
+                    {{ dish.dish_name }} - ${{ dish.price }}
+                </label>
             {% endfor %}
-        </select><br>
+        </div>
         <button type="submit">Place Order</button>
     </form>
     <a href="{% url 'menu' %}">Back to Menu</a>

@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 import json
 import time
+from django.http import JsonResponse
+
 # Create your views here.
 orders_list = []
 
@@ -9,11 +11,15 @@ def generate_unique_order_id():
     order_id = f"ORDER_{timestamp}"
     return order_id
 
+# def menu(request):
+#     dishes = Dish.objects.all()  # Fetch all dishes from the database
+#     return render(request, 'menu.html', {'dishes': dishes})
+
 def menu(request):
     with open('zomato/menu_data.json', 'r') as menu_file:
         menu_data = json.load(menu_file)
-
-    return render(request, "zomato/menu.html", {"menu_data": menu_data, "orders_list": orders_list})
+    return JsonResponse({"menu_data": menu_data, "orders_list": orders_list})
+    # return render(request, "zomato/menu.html", {"menu_data": menu_data, "orders_list": orders_list})
 
 def add_dish(request):
     if request.method == 'POST':
@@ -78,7 +84,6 @@ def update_availability(request, dish_id):
         json.dump(menu_data, menu_file, indent=4)
 
         return redirect('menu')
-    return render(request, "zomato/menu.html")
 
 
 
@@ -88,12 +93,14 @@ def place_order(request):
 
     if request.method == 'POST':
         order_dish_ids = request.POST.getlist('order_dish')
+        customer_name = request.POST['customer_name'] 
         
         # Assuming you have a function to generate a unique order ID
         new_order_id = generate_unique_order_id()
 
         # Create a new order with the selected dish IDs and initial status
         new_order = {
+            'customer_name': customer_name,
             'order_id': new_order_id,
             'dishes': [],
             'status': 'Received'

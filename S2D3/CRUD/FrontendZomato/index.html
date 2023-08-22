@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zesty Zomato Menu Management</title>
+</head>
+<body>
+    <h1>Welcome to Zesty Zomato's Menu Management</h1>
+    <form id="addDishForm">
+        <h2>Add a New Dish</h2>
+        <label for="dishName">Dish Name:</label>
+        <input type="text" id="dishName" required><br>
+        <label for="dishPrice">Price:</label>
+        <input type="number" id="dishPrice" step="0.01" required><br>
+        <label for="dishAvailability">Availability:</label>
+        <select id="dishAvailability" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br>
+        <button type="submit">Add Dish</button>
+    </form>
+    <div id="dishes">
+        <h2>Existing Dishes</h2> 
+        <ul>
+            {% for dish in dishes %}
+            <li>
+                <p><strong>Name:</strong> {{ dish.name }}</p>
+                <p><strong>Price:</strong> ${{ dish.price }}</p>
+                <p><strong>Availability:</strong> {{ dish.availability }}</p>
+                <button onclick="removeDish({{ dish.id }})">Remove</button>
+                <button onclick="updateDish({{ dish.id }})">Update</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+   
+   
+    <link rel="stylesheet" type="text/css" href="styles.css">
+<script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>
